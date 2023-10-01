@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { Hono } from 'hono';
 import { ContextEnv, Controller } from '../types/rehono';
 import app from '../app';
-import middlewareSessionId from '../middlewares/session';
+import { middlewareSession } from '../index';
 
 describe('middlewares/session', () => {
   it('session', async () => {
@@ -13,7 +13,7 @@ describe('middlewares/session', () => {
       return c.jsonT({ success: true, data: requestId });
     };
     const route = new Hono();
-    route.use('*', middlewareSessionId);
+    route.use('*', middlewareSession);
     route.get('/', helloController);
     const response = await route.request('/');
     const { success, data } = await response.json();

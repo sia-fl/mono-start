@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { Hono } from 'hono';
 import { ContextEnv, Controller } from '../types/rehono';
 import app from '../app';
-import middlewareRequestId from '../middlewares/request-id';
+import { middlewareRequestId } from '../index';
 
 describe('middlewares/request-id', () => {
   it('request-id', async () => {

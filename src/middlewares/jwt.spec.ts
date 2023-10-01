@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import middlewareJwt from '../middlewares/jwt';
 import { Hono } from 'hono';
 import { ContextEnv, Controller } from '../types/rehono';
-import app from '../index';
+import app, { middlewareJwt } from '../index';
 import { buildToken } from '../utils/func';
 
 describe('middlewares/jwt', () => {
