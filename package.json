@@ -1,0 +1,36 @@
+{
+  "name": "mono-start",
+  "version": "1.0.0",
+  "description": "creating a more convenient development environment based on the Hono framework.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sia-fl/mono-start"
+  },
+  "scripts": {
+    "build": "tsc && tsx build.ts",
+    "lint": "prettier --write .",
+    "test": "vitest"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "lock",
+    "redis"
+  ],
+  "author": "杨伟杰 <sia-fl@outlook.com> (https://github.com/sia-fl)",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.5"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.2.0",
+    "@types/node": "^20.7.1",
+    "dotenv": "^16.3.1",
+    "hono": "^3.7.2",
+    "mono-cache": "^1.0.5"
+  }
+}
