@@ -1,4 +1,5 @@
 import { ctxAuthUser, ctxRequestId, ctxSessionId } from './context';
+import { keys } from './utils/func';
 
 const app = () => {
   return {
@@ -10,6 +11,11 @@ const app = () => {
     },
     sessionId() {
       return ctxSessionId.getStore() as any;
+    },
+    keys,
+    debug() {
+      const debug = process.env.APP_DEBUG;
+      return ['1', 'true', 'on', 'yes'].includes(debug);
     }
   };
 };
