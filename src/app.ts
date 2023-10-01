@@ -1,4 +1,4 @@
-import { ctxAuthUser, ctxRequestId, ctxSessionId } from '@/context.ts';
+import { ctxAuthUser, ctxRequestId, ctxSessionId } from './context';
 
 const app = () => {
   return {
