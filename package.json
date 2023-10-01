@@ -11,16 +11,22 @@
     "lint": "prettier --write .",
     "test": "vitest"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "keywords": [
-    "lock",
-    "redis"
+    "start",
+    "hono",
+    "session",
+    "jwt",
+    "middleware"
   ],
   "author": "杨伟杰 <sia-fl@outlook.com> (https://github.com/sia-fl)",
   "license": "MIT",
   "devDependencies": {
+    "esbuild": "^0.19.4",
     "prettier": "^3.0.3",
     "tsx": "^3.13.0",
     "typescript": "^5.2.2",
