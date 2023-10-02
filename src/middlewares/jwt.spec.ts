@@ -1,25 +1,40 @@
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 import { Hono } from 'hono';
 import { ContextEnv, Controller } from '../types/rehono';
 import app, { middlewareJwt } from '../index';
 import { buildToken } from '../utils/func';
 
 describe('middlewares/jwt', () => {
-  it('jwt', async () => {
-    const token = await buildToken({
+  let token: string;
+
+  beforeAll(async () => {
+    token = await buildToken({
       data: {
         id: 1,
         phone: '19977775555'
       }
     });
-    const helloController = (c: Controller<ContextEnv>) => {
+  });
+
+  it('jwt app user', async () => {
+    const jwtAppUserController = (c: Controller<ContextEnv>) => {
       const user = app().user();
       return c.jsonT({ success: true, data: user });
     };
     const route = new Hono();
     route.use('*', middlewareJwt);
-    route.get('/', helloController);
-    const response = await route.request('/', {
+    route.get('/app/user', jwtAppUserController);
+  });
+
+  it('jwt ctx user', async () => {
+    const jwtCtxUserController = (c: Controller<ContextEnv>) => {
+      const user = c.get('user');
+      return c.jsonT({ success: true, data: user });
+    };
+    const route = new Hono();
+    route.use('*', middlewareJwt);
+    route.get('/ctx/user', jwtCtxUserController);
+    const response = await route.request('/ctx/user', {
       headers: {
         Authorization: `Bearer ${token}`
       }
