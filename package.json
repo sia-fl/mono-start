@@ -1,6 +1,6 @@
 {
   "name": "mono-start",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "creating a more convenient development environment based on the Hono framework.",
   "repository": {
     "type": "git",
@@ -9,7 +9,8 @@
   "scripts": {
     "build": "tsc && tsx build.ts",
     "lint": "prettier --write .",
-    "test": "vitest"
+    "test": "vitest",
+    "push": "npm run build && npm publish --access public"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

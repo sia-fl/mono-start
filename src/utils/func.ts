@@ -1,4 +1,6 @@
 import { sign } from 'hono/jwt';
+import { Context } from 'hono';
+import { verify } from 'hono/jwt';
 
 export const keys = () => {
   return {
@@ -60,4 +62,13 @@ export const envParseToNumberArray = (env: string) => {
  */
 export const envParseToJson = (env: string) => {
   return JSON.parse(env);
+};
+
+export const parseToken = async (c: Context) => {
+  let token = c.req.header('Authorization');
+  if (!token) {
+    throw new Error('token not found');
+  }
+  token = token.replace('Bearer ', '');
+  return await verify(token, keys().jwt);
 };
