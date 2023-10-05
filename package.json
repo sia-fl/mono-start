@@ -1,6 +1,6 @@
 {
   "name": "mono-start",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "creating a more convenient development environment based on the Hono framework.",
   "repository": {
     "type": "git",

@@ -18,10 +18,13 @@ const middlewareJwt: MiddlewareHandler<ContextEnv> = async (c, next) => {
     c.set('user', result.data);
     ctxAuthUser.enterWith(result.data);
   } catch (e) {
-    return c.json({
-      success: false,
-      message: invalidMessage
-    });
+    return c.json(
+      {
+        success: false,
+        message: invalidMessage
+      },
+      403
+    );
   }
 
   await next();
